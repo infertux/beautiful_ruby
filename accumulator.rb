@@ -25,9 +25,8 @@ end
 
 raise unless extras_count_store == expected
 
-# snippet #2: still fugly
-extras_count_store_2 = extras_summary.inject({}) do |hash, extra_summary|
-  hash[name_with_unit(extra_summary)] ||= 0
+# snippet #2: ugly
+extras_count_store_2 = extras_summary.inject(Hash.new(0)) do |hash, extra_summary|
   hash[name_with_unit(extra_summary)] += extra_summary[:count]
   hash
 end
